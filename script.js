@@ -73,3 +73,36 @@ if ('IntersectionObserver' in window && revealElements.length > 0) {
   revealElements.forEach((el) => el.classList.add('reveal--visible'));
 }
 
+// Active section highlighting (desktop rail + mobile nav)
+const navAnchors = Array.from(document.querySelectorAll('.nav__links a'));
+const sections = Array.from(document.querySelectorAll('main section[id]'));
+
+function setActiveSection(id) {
+  navAnchors.forEach((a) => {
+    const href = a.getAttribute('href');
+    const isActive = href === `#${id}`;
+    a.setAttribute('aria-current', isActive ? 'true' : 'false');
+  });
+}
+
+if ('IntersectionObserver' in window && sections.length > 0 && navAnchors.length > 0) {
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((e) => e.isIntersecting)
+        .sort((a, b) => (a.boundingClientRect.top ?? 0) - (b.boundingClientRect.top ?? 0));
+      if (visible.length === 0) return;
+      const id = visible[0].target.getAttribute('id');
+      if (!id) return;
+      setActiveSection(id);
+    },
+    {
+      root: null,
+      threshold: 0.35,
+      rootMargin: '-15% 0px -60% 0px',
+    }
+  );
+
+  sections.forEach((s) => sectionObserver.observe(s));
+}
+
