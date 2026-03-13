@@ -85,24 +85,25 @@ function setActiveSection(id) {
   });
 }
 
-if ('IntersectionObserver' in window && sections.length > 0 && navAnchors.length > 0) {
-  const sectionObserver = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => (a.boundingClientRect.top ?? 0) - (b.boundingClientRect.top ?? 0));
-      if (visible.length === 0) return;
-      const id = visible[0].target.getAttribute('id');
-      if (!id) return;
-      setActiveSection(id);
-    },
-    {
-      root: null,
-      threshold: 0.35,
-      rootMargin: '-15% 0px -60% 0px',
-    }
-  );
+if (sections.length > 0 && navAnchors.length > 0) {
+  const updateActiveOnScroll = () => {
+    const scrollPosition = window.scrollY + 160; // bias slightly below top
+    let currentId = sections[0].id;
 
-  sections.forEach((s) => sectionObserver.observe(s));
+    sections.forEach((section) => {
+      const rect = section.getBoundingClientRect();
+      const top = window.scrollY + rect.top;
+      if (top <= scrollPosition) {
+        currentId = section.id;
+      }
+    });
+
+    setActiveSection(currentId);
+  };
+
+  // Set initial state
+  updateActiveOnScroll();
+
+  window.addEventListener('scroll', updateActiveOnScroll, { passive: true });
 }
 
