@@ -2,270 +2,1000 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>College Journey Portfolio | Akash Bhasker</title>
+    <title>Akash Bhasker | Portfolio</title>
     <meta
       name="description"
-      content="College journey portfolio of Akash Bhasker, CSE Core student at VIT Vellore, reflecting experiences, growth, and ideas."
+      content="Personal portfolio of Akash Bhasker, B.Tech student at VIT Vellore and aspiring digital entrepreneur."
     />
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              primary: {
+                500: '#facc15', // yellow-400
+                600: '#eab308', // yellow-500
+                700: '#ca8a04', // yellow-600
+              },
+              accent: {
+                500: '#0f766e',
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at top, #fefce8 0, #ffffff 55%),
+          linear-gradient(to bottom, #fefce8, #ffffff);
+      }
+
+      .glass {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.92),
+          rgba(248, 250, 252, 0.96)
+        );
+        border: 1px solid rgba(252, 211, 77, 0.45);
+        box-shadow:
+          0 18px 40px rgba(15, 23, 42, 0.12),
+          0 0 0 1px rgba(226, 232, 240, 0.7);
+        backdrop-filter: blur(18px);
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+
+      .reveal-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .gradient-text {
+        background-image: linear-gradient(
+          135deg,
+          #facc15,
+          #f97316,
+          #0f766e
+        );
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f9fafb;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #e5e7eb;
+        border-radius: 999px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #d1d5db;
+      }
+
+      .card-hover {
+        transition:
+          transform 0.16s ease,
+          box-shadow 0.16s ease,
+          border-color 0.16s ease,
+          background 0.16s ease;
+      }
+
+      .card-hover:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.16);
+        border-color: rgba(250, 204, 21, 0.85);
+      }
+
+      .nav-link-active {
+        color: #0f172a;
+      }
+    </style>
   </head>
-  <body>
-    <header class="site-header" id="top">
-      <nav class="nav">
-        <a href="#top" class="nav__brand" aria-label="College Journey Portfolio Home">
-          <span class="nav__title-main">College Journey</span>
-          <span class="nav__title-sub">Akash Bhasker</span>
+  <body class="min-h-screen font-sans text-slate-900 bg-transparent">
+    <!-- ===== Navigation ===== -->
+    <header
+      class="fixed inset-x-0 top-0 z-40 border-b border-yellow-200/70 bg-white/80 backdrop-blur-xl"
+    >
+      <nav
+        class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6"
+      >
+        <a href="#home" class="flex items-center gap-2">
+          <div
+            class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-yellow-400 via-yellow-300 to-orange-300 text-xs font-semibold text-slate-900 shadow-lg shadow-yellow-300/70"
+          >
+            AB
+          </div>
+          <div class="flex flex-col leading-tight">
+            <span class="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-slate-500"
+              >Portfolio</span
+            >
+            <span class="text-sm font-semibold text-slate-900"
+              >Akash Bhasker</span
+            >
+          </div>
         </a>
-        <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
-          <span></span>
-          <span></span>
+
+        <!-- Desktop nav -->
+        <div class="hidden items-center gap-6 text-xs font-medium sm:flex">
+          <a
+            href="#home"
+            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            >Home</a
+          >
+          <a
+            href="#about"
+            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            >About</a
+          >
+          <a
+            href="#skills"
+            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            >Skills</a
+          >
+          <a
+            href="#activities"
+            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            >Activities</a
+          >
+          <a
+            href="#interests"
+            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            >Interests</a
+          >
+          <a
+            href="#projects"
+            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            >Contact</a
+          >
+        </div>
+
+        <!-- Mobile button -->
+        <button
+          id="mobile-nav-toggle"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-yellow-200 bg-white/90 text-slate-800 shadow-sm shadow-yellow-100 sm:hidden"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+        >
+          <span class="sr-only">Open navigation</span>
+          <div class="space-y-1.5">
+            <span class="block h-0.5 w-4 rounded bg-slate-800"></span>
+            <span class="block h-0.5 w-4 rounded bg-slate-800"></span>
+          </div>
         </button>
-        <ul class="nav__links">
-          <li><a href="#introduction" aria-current="true">Introduction</a></li>
-          <li><a href="#listening">Listening</a></li>
-          <li><a href="#speaking">Speaking</a></li>
-          <li><a href="#reading">Reading</a></li>
-          <li><a href="#reflection">Reflection</a></li>
-        </ul>
       </nav>
 
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero__content">
-          <p class="hero__eyebrow">College Journey</p>
-          <h1 id="hero-title" class="hero__title">
-            Portfolio
-          </h1>
-          <p class="hero__subtitle">
-            <span class="hero__name">Akash Bhasker</span><br />
-            VIT Vellore · CSE Core · 2nd Semester
-          </p>
-          <p class="hero__meta">
-            Degree: B.Tech CSE Core<br />
-            College: VIT Vellore
-          </p>
-        </div>
-        <div class="hero__badge">
-          <p class="hero__badge-university">VIT Vellore</p>
-          <p class="hero__badge-dept">School of Computer Science and Engineering (SCOPE)</p>
-        </div>
-      </section>
-    </header>
-
-    <main>
-      <section id="introduction" class="section section--alt" aria-labelledby="intro-heading">
-        <div class="section__inner">
-          <header class="section__header reveal">
-            <h2 id="intro-heading" class="section__title">Introduction</h2>
-            <p class="section__kicker">About my journey</p>
-          </header>
-          <article class="text-block reveal">
-            <p>
-              I am a second semester Computer Science and Engineering student at VIT Vellore. This portfolio captures my
-              college journey so far — the people, ideas, and experiences that are shaping who I am, both inside and
-              outside the classroom.
-            </p>
-          </article>
-
-          <div class="intro-highlights">
-            <article class="intro-card reveal" aria-label="Music and guitar achievements">
-              <div class="intro-card__icon" aria-hidden="true">
-                <span class="intro-card__symbol">♪</span>
-              </div>
-              <div class="intro-card__body">
-                <h3 class="intro-card__title">Music & Guitar</h3>
-                <p>
-                  I play both classical and acoustic guitar and have completed up to the 5th grade in the Trinity
-                  College London guitar examinations.
-                </p>
-                <p>On campus, music is my constant — a creative outlet that keeps me grounded and disciplined.</p>
-              </div>
-            </article>
-
-            <article class="intro-card reveal" aria-label="Sports and fitness achievements">
-              <div class="intro-card__icon" aria-hidden="true">
-                <span class="intro-card__symbol">⚑</span>
-              </div>
-              <div class="intro-card__body">
-                <h3 class="intro-card__title">Sports & Fitness</h3>
-                <p>
-                  I am passionate about cricket and regularly play the sport, along with running and other fitness
-                  activities.
-                </p>
-                <p>My current best in a 5 km run is 22 minutes and 37 seconds, and I’m working to beat it.</p>
-              </div>
-            </article>
-
-            <article class="intro-card reveal" aria-label="College goals and mindset">
-              <div class="intro-card__icon" aria-hidden="true">
-                <span class="intro-card__symbol">✎</span>
-              </div>
-              <div class="intro-card__body">
-                <h3 class="intro-card__title">College Goals & Growth</h3>
-                <p>
-                  In college, my main goal is to build a strong foundation in computer science while also improving how
-                  I think, communicate, and work with people from different backgrounds.
-                </p>
-                <p>
-                  I want these years to be about exploring ideas, taking meaningful risks, and preparing myself for
-                  both higher studies and real-world challenges.
-                </p>
-              </div>
-            </article>
+      <!-- Mobile menu -->
+      <div
+        id="mobile-nav"
+        class="glass pointer-events-none absolute inset-x-0 top-full origin-top scale-y-95 opacity-0 transition-all duration-150 sm:hidden"
+      >
+        <div class="mx-4 mb-3 mt-1 rounded-2xl border border-yellow-200/80">
+          <div class="flex flex-col gap-1.5 px-4 py-3 text-sm">
+            <a
+              href="#home"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              >Home</a
+            >
+            <a
+              href="#about"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              >About</a
+            >
+            <a
+              href="#skills"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              >Skills</a
+            >
+            <a
+              href="#activities"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              >Activities</a
+            >
+            <a
+              href="#interests"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              >Interests</a
+            >
+            <a
+              href="#projects"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              >Projects</a
+            >
+            <a
+              href="#contact"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              >Contact</a
+            >
           </div>
-        </div>
-      </section>
-
-      <section id="listening" class="section" aria-labelledby="listening-heading">
-        <div class="section__inner">
-          <header class="section__header reveal">
-            <h2 id="listening-heading" class="section__title">First-Year Transition</h2>
-            <p class="section__kicker">Settling into college life</p>
-          </header>
-
-          <div class="grid">
-            <article class="card reveal" aria-labelledby="listening-card-title">
-              <div class="card__tag">Semester One</div>
-              <h3 id="listening-card-title" class="card__title">
-                From School to Campus – Adjusting to a New Life
-              </h3>
-              <p>
-                Moving from school to college meant getting used to a completely new environment — a different city,
-                hostel life, and a packed timetable. The first few weeks were about finding my way around campus,
-                managing classes on my own, and learning how to balance studies with everything else happening around me.
-              </p>
-              <p>
-                I realised that college is less about memorising content and more about understanding concepts and
-                applying them. Simple things like asking doubts in class, forming study groups, and organising my notes
-                made a big difference in how confident I felt.
-              </p>
-              <p>
-                This phase taught me that growth happens gradually — through everyday routines, small improvements, and
-                being open to learning from people around me.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="speaking" class="section section--alt" aria-labelledby="speaking-heading">
-        <div class="section__inner">
-          <header class="section__header reveal">
-            <h2 id="speaking-heading" class="section__title">Campus Life & Activities</h2>
-            <p class="section__kicker">People, clubs, and conversations</p>
-          </header>
-
-          <div class="grid">
-            <article class="card reveal" aria-labelledby="speaking-card-title">
-              <div class="card__tag card__tag--accent">Campus Life</div>
-              <h3 id="speaking-card-title" class="card__title">
-                Clubs, Hostels & Late-Night Conversations
-              </h3>
-              <p>
-                One of the most important parts of my college journey so far has been the people I have met — classmates,
-                seniors, and friends from different branches and backgrounds.
-              </p>
-              <p>
-                Through hostel life, club meetings, and random late-night conversations, I have learnt how valuable it
-                is to listen to different perspectives. Discussing career plans, college experiences, technology,
-                hobbies, and even small everyday problems has helped me become more open-minded and expressive.
-              </p>
-              <p>
-                These interactions have made me more comfortable speaking in groups, sharing my thoughts, and accepting
-                feedback. They are a big part of how I am growing as a person, not just as a student.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="reading" class="section" aria-labelledby="reading-heading">
-        <div class="section__inner">
-          <header class="section__header reveal">
-            <h2 id="reading-heading" class="section__title">Projects & Learning</h2>
-            <p class="section__kicker">Building skills step by step</p>
-          </header>
-
-          <div class="grid">
-            <article class="card reveal" aria-labelledby="reading-card-title">
-              <div class="card__tag card__tag--muted">Academics</div>
-              <h3 id="reading-card-title" class="card__title">
-                Early Projects and Academic Milestones
-              </h3>
-              <p>
-                My academic journey so far has focused on building a strong base in core subjects like programming,
-                mathematics, and problem solving. Each course has added a different layer to how I think about
-                technology and real-world applications.
-              </p>
-              <p>
-                Alongside coursework, I have started working on small projects and practice problems — from basic
-                programs to exploring new concepts beyond the syllabus. These projects may be simple, but they are the
-                first steps towards building confidence as a developer.
-              </p>
-              <p>
-                Each assignment, lab, and project has taught me something — not just content-wise, but also about time
-                management, debugging patiently, and learning from mistakes.
-              </p>
-              <p>
-                Over time, I want to explore more projects related to my interests in computer science while keeping my
-                fundamentals strong.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="reflection" class="section section--alt" aria-labelledby="reflection-heading">
-        <div class="section__inner">
-          <header class="section__header reveal">
-            <h2 id="reflection-heading" class="section__title">Reflection & Future Plans</h2>
-            <p class="section__kicker">Looking back, thinking ahead</p>
-          </header>
-
-          <article class="text-block reveal">
-            <p>
-              When I look back at my college journey so far, I see a mix of small wins, doubts, new habits, and gradual
-              progress. Adjusting to a new environment, meeting new people, and handling academic pressure have all
-              pushed me out of my comfort zone.
-            </p>
-            <p>
-              I have learned that consistency matters more than sudden bursts of effort — whether it is in studying,
-              practising guitar, playing sports, or working on myself. Moments of failure or confusion have also taught
-              me to be more patient and resilient.
-            </p>
-            <p>
-              Going forward, I want to deepen my technical skills, participate in more projects and events, and continue
-              building meaningful relationships on campus. My goal is to leave college not just with a degree, but with
-              clarity about who I am and what I want to work towards.
-            </p>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer" aria-label="Footer">
-      <div class="site-footer__inner">
-        <div class="site-footer__primary">
-          <p class="site-footer__name">Akash Bhasker</p>
-          <p class="site-footer__line">College Journey Portfolio</p>
-          <p class="site-footer__line">VIT Vellore</p>
-        </div>
-        <div class="site-footer__meta">
-          <p>Department: CSE Core (SCOPE)</p>
-          <p>Current semester: 2nd Semester</p>
         </div>
       </div>
-      <a class="site-footer__backtotop" href="#top">Back to top</a>
+    </header>
+
+    <!-- Page container -->
+    <main class="pt-24 sm:pt-28">
+      <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <!-- ===== Hero ===== -->
+        <section
+          id="home"
+          class="reveal mb-20 scroll-mt-28 lg:mb-24 lg:grid lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] lg:items-center lg:gap-12"
+        >
+          <div class="mb-10 space-y-5 lg:mb-0">
+            <p
+              class="inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-yellow-50 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-amber-600"
+            >
+              <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+              Computer Science · VIT Vellore
+            </p>
+
+            <div>
+              <h1
+                class="font-display text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl"
+              >
+                Akash <span class="gradient-text">Bhasker</span>
+              </h1>
+              <p class="mt-3 text-xs font-medium uppercase tracking-[0.25em] text-slate-500">
+                B.Tech Student · Aspiring Digital Entrepreneur · Developer
+              </p>
+            </div>
+
+            <p class="max-w-xl text-sm leading-relaxed text-slate-700 sm:text-base">
+              I am a first-year B.Tech student at VIT Vellore who enjoys technology,
+              structured problem solving, and building digital products. I’m especially
+              interested in how software, design, and business come together to create
+              tools that people actually want to use.
+            </p>
+
+            <div
+              class="relative mt-4 max-w-xl rounded-2xl border border-yellow-300 bg-white/95 p-4 text-sm text-slate-800 shadow-lg shadow-yellow-100"
+            >
+              <div
+                class="pointer-events-none absolute -left-6 top-4 h-10 w-10 rounded-full bg-yellow-200/70 blur-lg"
+              ></div>
+              <div
+                class="pointer-events-none absolute -right-4 bottom-4 h-8 w-8 rounded-full bg-amber-200/70 blur-lg"
+              ></div>
+              <p class="relative text-[0.95rem] leading-relaxed">
+                "Consistency compounds. What feels small today becomes the foundation of
+                everything tomorrow."
+              </p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-4 pt-1 text-xs text-slate-500">
+              <span
+                class="inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-yellow-50 px-3 py-1"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                1st Year · 2nd Semester
+              </span>
+              <span class="text-slate-500">B.Tech · VIT Vellore</span>
+            </div>
+          </div>
+
+          <!-- Right column -->
+          <div class="space-y-4">
+            <div class="glass card-hover rounded-2xl p-5">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-slate-500">
+                    Profile
+                  </p>
+                  <p class="mt-1 text-sm font-medium text-slate-900">
+                    Akash Bhasker
+                  </p>
+                  <p class="text-xs text-slate-500">
+                    B.Tech · 1st Year – 2nd Semester
+                  </p>
+                </div>
+                <div
+                  class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-tr from-yellow-400 via-orange-300 to-amber-400 text-xs font-semibold text-slate-900 shadow-lg shadow-yellow-300/80"
+                >
+                  CS
+                </div>
+              </div>
+
+              <dl class="mt-4 grid grid-cols-2 gap-4 text-xs text-slate-600">
+                <div>
+                  <dt class="text-[0.65rem] uppercase tracking-[0.16em] text-slate-500">
+                    University
+                  </dt>
+                  <dd class="mt-1 text-[0.82rem]">
+                    VIT, Vellore
+                  </dd>
+                </div>
+                <div>
+                  <dt class="text-[0.65rem] uppercase tracking-[0.16em] text-slate-500">
+                    Focus
+                  </dt>
+                  <dd class="mt-1 text-[0.82rem]">
+                    CS · Full Stack · Entrepreneurship
+                  </dd>
+                </div>
+              </dl>
+            </div>
+
+            <div
+              class="rounded-2xl border border-yellow-200 bg-yellow-50 p-4 text-xs text-slate-700 shadow-md shadow-yellow-100"
+            >
+              <p class="text-[0.9rem] leading-relaxed">
+                "We are what we repeatedly do. Excellence, then, is not an act but a
+                habit."
+                <span class="text-slate-500">— Aristotle</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== About ===== -->
+        <section id="about" class="reveal mb-20 scroll-mt-28 lg:mb-24">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <div>
+              <h2
+                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+              >
+                About
+              </h2>
+              <p class="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+                Background & mindset
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="glass card-hover grid gap-6 rounded-2xl p-6 text-sm leading-relaxed text-slate-800 sm:grid-cols-[minmax(0,1.8fr)_minmax(0,1.2fr)] sm:p-7"
+          >
+            <div class="space-y-3">
+              <p>
+                Akash is a first-year B.Tech student at Vellore Institute of Technology
+                (VIT), Vellore, interested in technology, entrepreneurship, and building
+                digital products.
+              </p>
+              <p>
+                He chose B.Tech because it acts as the bridge between his interests
+                growing up and his long-term goal of pursuing digital entrepreneurship.
+                While reviewing the curriculum, he noticed courses like Data Structures
+                that specifically develop structured problem solving — a skill that is
+                highly valued in the industry he hopes to enter.
+              </p>
+              <p>
+                He views college as a place to develop independent thinking and practical
+                skills rather than just passively receiving information in lectures.
+                Instead of only being taught information, he wants to learn how to
+                educate himself, challenge assumptions, and apply theoretical concepts to
+                real-world projects.
+              </p>
+            </div>
+
+            <div
+              class="space-y-3 rounded-xl border border-yellow-200 bg-yellow-50 p-4 text-sm text-slate-800"
+            >
+              <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amber-700">
+                College expectations vs reality
+              </p>
+              <p>
+                Before joining college, Akash imagined instant "movie-style" friend
+                groups. In reality, he discovered that relationships tend to form more
+                gradually. Many of the strongest friendships grow through shared academic
+                challenges, late-night study sessions, and collaborative problem
+                solving.
+              </p>
+              <p>
+                This gradual pace has made him appreciate depth over speed — investing in
+                consistent effort, honest conversations, and shared experiences over
+                time.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Skills ===== -->
+        <section id="skills" class="reveal mb-20 scroll-mt-28 lg:mb-24">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <div>
+              <h2
+                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+              >
+                Skills
+              </h2>
+              <p class="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+                Technical foundations
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="mb-4 rounded-2xl border border-yellow-200 bg-yellow-50/70 p-4 text-xs text-slate-700 sm:text-sm"
+          >
+            Akash is currently learning Data Structures and Algorithms using
+            <span class="font-semibold text-amber-700">C</span> and
+            <span class="font-semibold text-amber-700">C++</span>, while also exploring
+            web development and full stack concepts.
+          </div>
+
+          <div class="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+            <!-- C -->
+            <div
+              class="glass card-hover flex flex-col justify-between rounded-2xl p-4 text-sm"
+            >
+              <div>
+                <p
+                  class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-500"
+                >
+                  Language
+                </p>
+                <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                  C
+                </h3>
+                <p class="mt-2 text-xs text-slate-600">
+                  Core programming, understanding memory, and structured thinking.
+                </p>
+              </div>
+            </div>
+
+            <!-- C++ -->
+            <div class="glass card-hover rounded-2xl p-4 text-sm">
+              <p
+                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-500"
+              >
+                Language
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                C++
+              </h3>
+              <p class="mt-2 text-xs text-slate-600">
+                Object-oriented programming and efficient problem solving.
+              </p>
+            </div>
+
+            <!-- Data Structures -->
+            <div class="glass card-hover rounded-2xl p-4 text-sm">
+              <p
+                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-500"
+              >
+                Core CS
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                Data Structures
+              </h3>
+              <p class="mt-2 text-xs text-slate-600">
+                Arrays, linked lists, stacks, queues, and more as the basis for
+                algorithms.
+              </p>
+            </div>
+
+            <!-- Problem Solving -->
+            <div class="glass card-hover rounded-2xl p-4 text-sm">
+              <p
+                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-500"
+              >
+                Mindset
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                Problem Solving
+              </h3>
+              <p class="mt-2 text-xs text-slate-600">
+                Breaking complex problems into smaller steps and reasoning through edge
+                cases.
+              </p>
+            </div>
+
+            <!-- Web Dev -->
+            <div class="glass card-hover rounded-2xl p-4 text-sm">
+              <p
+                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-500"
+              >
+                Frontend
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                Web Development
+              </h3>
+              <p class="mt-2 text-xs text-slate-600">
+                Building responsive interfaces and exploring modern UI patterns.
+              </p>
+            </div>
+
+            <!-- Full Stack -->
+            <div class="glass card-hover rounded-2xl p-4 text-sm">
+              <p
+                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-amber-700"
+              >
+                Learning
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                Full Stack Development
+              </h3>
+              <p class="mt-2 text-xs text-slate-600">
+                Understanding how frontend, backend, and databases connect to form
+                complete products.
+              </p>
+            </div>
+
+            <!-- Git -->
+            <div
+              class="glass card-hover rounded-2xl p-4 text-sm md:col-span-2 lg:col-span-2"
+            >
+              <p
+                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-500"
+              >
+                Tools
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                Git
+              </h3>
+              <p class="mt-2 text-xs text-slate-600">
+                Version control, tracking changes, and collaborating on projects in a
+                structured way.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Academic Activities ===== -->
+        <section id="activities" class="reveal mb-20 scroll-mt-28 lg:mb-24">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <div>
+              <h2
+                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+              >
+                Academic Activities
+              </h2>
+              <p class="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+                Learning experiences
+              </p>
+            </div>
+          </div>
+
+          <div class="grid gap-5 lg:grid-cols-3">
+            <!-- Podcast -->
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+              <p
+                class="mb-2 inline-flex rounded-full border border-sky-300 bg-sky-50 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-sky-700"
+              >
+                Reflection
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                Podcast Reflection
+              </h3>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                Akash participated in a classroom activity where students listened to and
+                summarized a podcast discussing meaningfulness in life and the idea that
+                purpose often comes from consistent growth and personal development.
+              </p>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                The activity reinforced the importance of long-term habits over instant
+                results, echoing his own belief that small, repeated efforts build the
+                foundation for future goals.
+              </p>
+            </article>
+
+            <!-- Chemistry -->
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+              <p
+                class="mb-2 inline-flex rounded-full border border-emerald-300 bg-emerald-50 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-emerald-700"
+              >
+                Laboratory
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                Chemistry Laboratory Work
+              </h3>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                During chemistry lab sessions, Akash performed titration experiments
+                including acid–base titration and redox titration. These experiments
+                required precise measurements, careful observation, and calculations to
+                determine unknown concentrations.
+              </p>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                This hands-on work trained his attention to detail and discipline — the
+                same qualities that transfer well to debugging code and validating
+                results in programming.
+              </p>
+            </article>
+
+            <!-- DS -->
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+              <p
+                class="mb-2 inline-flex rounded-full border border-fuchsia-300 bg-fuchsia-50 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-fuchsia-700"
+              >
+                Coursework
+              </p>
+              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                Data Structures Learning
+              </h3>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                Through coursework in data structures, Akash has begun developing
+                algorithmic thinking and problem solving skills using C and C++. The
+                course focuses on organizing data efficiently and designing algorithms to
+                solve computational problems.
+              </p>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                These concepts form the backbone of his future goals in full stack
+                development and digital product building.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ===== Interests ===== -->
+        <section id="interests" class="reveal mb-20 scroll-mt-28 lg:mb-24">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <div>
+              <h2
+                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+              >
+                Interests
+              </h2>
+              <p class="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+                Beyond academics
+              </p>
+            </div>
+          </div>
+
+          <div class="grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1.3fr)_minmax(0,1.4fr)]">
+            <!-- Guitar -->
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                  Guitar
+                </h3>
+                <span
+                  class="inline-flex items-center rounded-full bg-yellow-50 px-2.5 py-0.5 text-[0.7rem] font-medium text-amber-700 border border-yellow-200"
+                  >Creative</span
+                >
+              </div>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                Akash started learning guitar in the fourth grade. He studied acoustic
+                guitar for several years and completed Trinity Grade 5 in acoustic guitar
+                before transitioning to classical guitar.
+              </p>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                He later completed Trinity Grade 5 in classical guitar as well. Music has
+                been a consistent creative outlet, although the workload of college has
+                made it harder to practice as regularly as before.
+              </p>
+            </article>
+
+            <!-- Cricket -->
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                  Cricket
+                </h3>
+                <span
+                  class="inline-flex items-center rounded-full bg-yellow-50 px-2.5 py-0.5 text-[0.7rem] font-medium text-amber-700 border border-yellow-200"
+                  >Team sport</span
+                >
+              </div>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                Akash played cricket extensively growing up and captained his school
+                cricket team in multiple tournaments. Under his leadership, the team
+                reached two finals and won one of them.
+              </p>
+              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                These experiences taught him about responsibility, teamwork, and
+                performing under pressure — skills that help in both academics and
+                projects.
+              </p>
+            </article>
+
+            <!-- Running -->
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+              <div class="flex items-center justify-between gap-3">
+                <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                  Running
+                </h3>
+                <span
+                  class="inline-flex items-center rounded-full bg-yellow-50 px-2.5 py-0.5 text-[0.7rem] font-medium text-amber-700 border border-yellow-200"
+                  >Discipline</span
+                >
+              </div>
+              <p class="mt-3 text-xs leading-relaxed text-slate-700">
+                For a long time, my asthma felt like an obstacle I couldn't get past,
+                especially since no medication seemed to provide a long-term fix. My
+                father always believed that exercise was the key to managing it, which is
+                why I started running back in the third grade. It took a while to really
+                find my stride, but two years ago, I finally committed to it. I set a
+                goal to hit a 20-minute 5K, and through that consistency, I managed to
+                bring my time down to 22:37. It felt good to see that progress and
+                realize that my lungs could actually handle the work. Since starting
+                college, that routine has completely dropped off, and I haven't been out
+                for a run at all. But looking back at that 22:37 reminds me that I’ve
+                already done the hard work of building a foundation. The goal now isn't
+                to do something impossible; it's just to get back to the consistency that
+                I know actually works for me.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ===== Projects ===== -->
+        <section id="projects" class="reveal mb-20 scroll-mt-28 lg:mb-24">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <div>
+              <h2
+                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+              >
+                Projects
+              </h2>
+              <p class="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+                Work in progress
+              </p>
+            </div>
+          </div>
+
+          <div class="glass card-hover rounded-2xl p-6 text-sm text-slate-800 sm:p-7">
+            <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div class="max-w-xl">
+                <p
+                  class="mb-2 inline-flex rounded-full border border-yellow-300 bg-yellow-50 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-amber-700"
+                >
+                  In progress
+                </p>
+                <h3 class="text-[1.15rem] font-semibold text-slate-900">
+                  Creative Full Stack Web Project
+                </h3>
+                <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                  Akash is currently working on a creative web-based project exploring
+                  full stack development. The goal is to design and build a digital
+                  product that combines front-end user experience with backend
+                  functionality.
+                </p>
+                <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                  The focus is on learning how ideas move from a simple concept to a
+                  working prototype — covering everything from UI design choices to how
+                  data flows through the system.
+                </p>
+              </div>
+
+              <div class="flex flex-col gap-2 pt-1 text-xs sm:items-end">
+                <button
+                  class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-1.5 font-medium text-slate-800 shadow-sm hover:border-slate-400"
+                  type="button"
+                >
+                  GitHub
+                </button>
+                <button
+                  class="inline-flex items-center justify-center rounded-full border border-yellow-300 bg-yellow-50 px-4 py-1.5 font-medium text-amber-800 shadow-sm hover:border-yellow-400"
+                  type="button"
+                >
+                  Live Demo
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Contact ===== -->
+        <section id="contact" class="reveal mb-16 scroll-mt-28 lg:mb-20">
+          <div class="mb-6 flex items-center justify-between gap-4">
+            <div>
+              <h2
+                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+              >
+                Contact
+              </h2>
+              <p class="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+                Say hello
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="glass grid gap-6 rounded-2xl p-6 text-sm text-slate-800 sm:grid-cols-[minmax(0,1.5fr)_minmax(0,1.5fr)] sm:p-7"
+          >
+            <div class="space-y-3">
+              <p class="text-sm text-slate-700">
+                Akash is always open to connecting with people who share interests in
+                technology, product building, or entrepreneurship.
+              </p>
+              <p class="text-xs text-slate-500">
+                This form is a static demo for now. In future versions, it can be
+                connected to email or a backend service.
+              </p>
+            </div>
+
+            <form
+              class="space-y-3 text-xs"
+              onsubmit="event.preventDefault(); alert('This is a static demo form.');"
+            >
+              <div class="grid gap-3 sm:grid-cols-2">
+                <div>
+                  <label class="mb-1 block text-[0.7rem] font-medium text-slate-600">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    class="w-full rounded-lg border border-yellow-200 bg-white px-3 py-1.5 text-xs text-slate-900 outline-none focus:border-yellow-400"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label class="mb-1 block text-[0.7rem] font-medium text-slate-600">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    class="w-full rounded-lg border border-yellow-200 bg-white px-3 py-1.5 text-xs text-slate-900 outline-none focus:border-yellow-400"
+                    placeholder="you@example.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label class="mb-1 block text-[0.7rem] font-medium text-slate-600">
+                  Message
+                </label>
+                <textarea
+                  rows="3"
+                  class="w-full rounded-lg border border-yellow-200 bg-white px-3 py-1.5 text-xs text-slate-900 outline-none focus:border-yellow-400"
+                  placeholder="Write a short message..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center rounded-full border border-yellow-300 bg-yellow-50 px-4 py-1.5 text-[0.75rem] font-medium text-amber-800 hover:border-yellow-400"
+              >
+                Send Message (Demo)
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- ===== Footer ===== -->
+    <footer class="border-t border-yellow-200 bg-white py-5">
+      <div
+        class="mx-auto flex max-w-6xl items-center justify-between px-4 text-xs text-slate-500 sm:px-6"
+      >
+        <p>
+          Built by <span class="font-medium text-slate-800">Akash Bhasker</span>
+        </p>
+        <a
+          href="#home"
+          class="rounded-full border border-yellow-300 bg-yellow-50 px-3 py-1 text-[0.7rem] text-amber-800 hover:border-yellow-400"
+        >
+          Back to top
+        </a>
+      </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- ===== JS: nav, smooth scroll, reveal ===== -->
+    <script>
+      const mobileToggle = document.getElementById('mobile-nav-toggle');
+      const mobileNav = document.getElementById('mobile-nav');
+
+      if (mobileToggle && mobileNav) {
+        mobileToggle.addEventListener('click', () => {
+          const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+          mobileToggle.setAttribute('aria-expanded', String(!expanded));
+          if (!expanded) {
+            mobileNav.classList.remove('pointer-events-none');
+            mobileNav.classList.add('opacity-100', 'scale-y-100');
+            mobileNav.classList.remove('opacity-0', 'scale-y-95');
+          } else {
+            mobileNav.classList.add('pointer-events-none');
+            mobileNav.classList.remove('opacity-100', 'scale-y-100');
+            mobileNav.classList.add('opacity-0', 'scale-y-95');
+          }
+        });
+
+        mobileNav.querySelectorAll('a').forEach((link) => {
+          link.addEventListener('click', () => {
+            mobileNav.classList.add('pointer-events-none');
+            mobileNav.classList.remove('opacity-100', 'scale-y-100');
+            mobileNav.classList.add('opacity-0', 'scale-y-95');
+            mobileToggle.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+
+      const headerOffset = 80;
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (e) => {
+          const targetId = anchor.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (!target) return;
+
+          e.preventDefault();
+          const rect = target.getBoundingClientRect();
+          const offsetTop = window.pageYOffset + rect.top - headerOffset;
+
+          window.scrollTo({
+            top: offsetTop < 0 ? 0 : offsetTop,
+            behavior: 'smooth',
+          });
+        });
+      });
+
+      const revealElements = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                obs.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.15,
+            rootMargin: '0px 0px -40px 0px',
+          }
+        );
+        revealElements.forEach((el) => observer.observe(el));
+      } else {
+        revealElements.forEach((el) => el.classList.add('reveal-visible'));
+      }
+
+      const sections = Array.from(
+        document.querySelectorAll('main section[id]')
+      );
+      const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+
+      function setActiveNav(id) {
+        navLinks.forEach((link) => {
+          const href = link.getAttribute('href');
+          if (href === `#${id}`) {
+            link.classList.add('nav-link-active');
+          } else {
+            link.classList.remove('nav-link-active');
+          }
+        });
+      }
+
+      function updateActiveSection() {
+        const scrollPosition = window.scrollY + headerOffset + 40;
+        let currentId = sections[0]?.id;
+        sections.forEach((section) => {
+          const top = section.offsetTop;
+          if (top <= scrollPosition) currentId = section.id;
+        });
+        if (currentId) setActiveNav(currentId);
+      }
+
+      if (sections.length && navLinks.length) {
+        updateActiveSection();
+        window.addEventListener('scroll', updateActiveSection, { passive: true });
+      }
+    </script>
   </body>
 </html>
 
