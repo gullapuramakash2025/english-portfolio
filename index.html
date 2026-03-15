@@ -21,13 +21,8 @@
               display: ['Space Grotesk', 'system-ui', 'sans-serif'],
             },
             colors: {
-              primary: {
-                500: '#facc15', // yellow-400
-                600: '#eab308', // yellow-500
-                700: '#ca8a04', // yellow-600
-              },
               accent: {
-                500: '#0f766e',
+                500: '#22c55e',
               },
             },
           },
@@ -48,43 +43,38 @@
 
       body {
         background:
-          radial-gradient(circle at top, #fefce8 0, #ffffff 55%),
-          linear-gradient(to bottom, #fefce8, #ffffff);
+          radial-gradient(circle at top left, #111827 0, #020617 50%),
+          radial-gradient(circle at bottom right, #0b1120 0, #020617 55%);
       }
 
       .glass {
         background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.92),
-          rgba(248, 250, 252, 0.96)
+          145deg,
+          rgba(15, 23, 42, 0.96),
+          rgba(15, 23, 42, 0.9)
         );
-        border: 1px solid rgba(252, 211, 77, 0.45);
+        border: 1px solid rgba(148, 163, 184, 0.45);
         box-shadow:
-          0 18px 40px rgba(15, 23, 42, 0.12),
-          0 0 0 1px rgba(226, 232, 240, 0.7);
-        backdrop-filter: blur(18px);
+          0 24px 55px rgba(0, 0, 0, 0.65),
+          0 0 0 1px rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(22px);
       }
 
       .reveal {
         opacity: 0;
-        transform: translateY(18px);
+        transform: translateY(22px) scale(0.98);
         transition:
-          opacity 0.5s ease,
-          transform 0.5s ease;
+          opacity 0.65s ease,
+          transform 0.65s ease;
       }
 
       .reveal-visible {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
 
       .gradient-text {
-        background-image: linear-gradient(
-          135deg,
-          #facc15,
-          #f97316,
-          #0f766e
-        );
+        background-image: linear-gradient(135deg, #e5e7eb, #f9fafb);
         -webkit-background-clip: text;
         color: transparent;
       }
@@ -93,51 +83,70 @@
         width: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #f9fafb;
+        background: #020617;
       }
       ::-webkit-scrollbar-thumb {
-        background: #e5e7eb;
+        background: #111827;
         border-radius: 999px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #d1d5db;
+        background: #1f2937;
       }
 
       .card-hover {
         transition:
           transform 0.16s ease,
-          box-shadow 0.16s ease,
-          border-color 0.16s ease,
-          background 0.16s ease;
+          box-shadow 0.2s ease,
+          border-color 0.2s ease,
+          background 0.2s ease;
       }
 
       .card-hover:hover {
         transform: translateY(-3px);
-        box-shadow: 0 18px 35px rgba(15, 23, 42, 0.16);
-        border-color: rgba(250, 204, 21, 0.85);
+        box-shadow: 0 24px 45px rgba(0, 0, 0, 0.7);
+        border-color: rgba(148, 163, 184, 0.85);
+      }
+
+      @keyframes heroGlow {
+        0% {
+          opacity: 0.8;
+          transform: translateY(0);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(-2px);
+        }
+        100% {
+          opacity: 0.8;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-glow {
+        animation: heroGlow 6s ease-in-out infinite;
       }
 
       .nav-link-active {
-        color: #0f172a;
+        color: #e5e7eb;
       }
     </style>
   </head>
-  <body class="min-h-screen font-sans text-slate-900 bg-transparent">
+  <body class="min-h-screen font-sans text-slate-100 bg-slate-950">
     <!-- ===== Navigation ===== -->
     <header
-      class="fixed inset-x-0 top-0 z-40 border-b border-yellow-200/70 bg-white/80 backdrop-blur-xl"
+      class="fixed inset-x-0 top-0 z-40 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl"
     >
       <nav
         class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6"
       >
         <a href="#home" class="flex items-center gap-2">
           <div
-            class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-yellow-400 via-yellow-300 to-orange-300 text-xs font-semibold text-slate-900 shadow-lg shadow-yellow-300/70"
+            class="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tr from-slate-100 via-slate-400 to-slate-200 text-xs font-semibold text-slate-900 shadow-lg shadow-slate-900/60"
           >
             AB
           </div>
           <div class="flex flex-col leading-tight">
-            <span class="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-slate-500"
+            <span class="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-slate-400"
               >Portfolio</span
             >
             <span class="text-sm font-semibold text-slate-900"
@@ -150,12 +159,12 @@
         <div class="hidden items-center gap-6 text-xs font-medium sm:flex">
           <a
             href="#home"
-            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            class="nav-link text-slate-400 hover:text-slate-50 transition-colors"
             >Home</a
           >
           <a
             href="#about"
-            class="nav-link text-slate-500 hover:text-slate-900 transition-colors"
+            class="nav-link text-slate-400 hover:text-slate-50 transition-colors"
             >About</a
           >
           <a
@@ -188,7 +197,7 @@
         <!-- Mobile button -->
         <button
           id="mobile-nav-toggle"
-          class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-yellow-200 bg-white/90 text-slate-800 shadow-sm shadow-yellow-100 sm:hidden"
+          class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-slate-700 bg-slate-900/90 text-slate-100 shadow-sm shadow-slate-900 sm:hidden"
           aria-label="Toggle navigation"
           aria-expanded="false"
         >
@@ -205,41 +214,41 @@
         id="mobile-nav"
         class="glass pointer-events-none absolute inset-x-0 top-full origin-top scale-y-95 opacity-0 transition-all duration-150 sm:hidden"
       >
-        <div class="mx-4 mb-3 mt-1 rounded-2xl border border-yellow-200/80">
+        <div class="mx-4 mb-3 mt-1 rounded-2xl border border-slate-700/80">
           <div class="flex flex-col gap-1.5 px-4 py-3 text-sm">
             <a
               href="#home"
-              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-200 hover:bg-slate-800/80"
               >Home</a
             >
             <a
               href="#about"
-              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-200 hover:bg-slate-800/80"
               >About</a
             >
             <a
               href="#skills"
-              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-200 hover:bg-slate-800/80"
               >Skills</a
             >
             <a
               href="#activities"
-              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-200 hover:bg-slate-800/80"
               >Activities</a
             >
             <a
               href="#interests"
-              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-200 hover:bg-slate-800/80"
               >Interests</a
             >
             <a
               href="#projects"
-              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-200 hover:bg-slate-800/80"
               >Projects</a
             >
             <a
               href="#contact"
-              class="nav-link block rounded-lg px-2 py-1.5 text-slate-700 hover:bg-yellow-50"
+              class="nav-link block rounded-lg px-2 py-1.5 text-slate-200 hover:bg-slate-800/80"
               >Contact</a
             >
           </div>
@@ -255,11 +264,11 @@
           id="home"
           class="reveal mb-20 scroll-mt-28 lg:mb-24 lg:grid lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1.1fr)] lg:items-center lg:gap-12"
         >
-          <div class="mb-10 space-y-5 lg:mb-0">
+          <div class="mb-10 space-y-5 lg:mb-0 hero-glow">
             <p
-              class="inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-yellow-50 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-amber-600"
+              class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-slate-300"
             >
-              <span class="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
+              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
               Computer Science · VIT Vellore
             </p>
 
@@ -269,12 +278,12 @@
               >
                 Akash <span class="gradient-text">Bhasker</span>
               </h1>
-              <p class="mt-3 text-xs font-medium uppercase tracking-[0.25em] text-slate-500">
+              <p class="mt-3 text-xs font-medium uppercase tracking-[0.25em] text-slate-400">
                 B.Tech Student · Aspiring Digital Entrepreneur · Developer
               </p>
             </div>
 
-            <p class="max-w-xl text-sm leading-relaxed text-slate-700 sm:text-base">
+            <p class="max-w-xl text-sm leading-relaxed text-slate-200 sm:text-base">
               I am a first-year B.Tech student at VIT Vellore who enjoys technology,
               structured problem solving, and building digital products. I’m especially
               interested in how software, design, and business come together to create
@@ -282,7 +291,7 @@
             </p>
 
             <div
-              class="relative mt-4 max-w-xl rounded-2xl border border-yellow-300 bg-white/95 p-4 text-sm text-slate-800 shadow-lg shadow-yellow-100"
+              class="relative mt-4 max-w-xl rounded-2xl border border-slate-700 bg-slate-900/90 p-4 text-sm text-slate-100 shadow-lg shadow-black/70"
             >
               <div
                 class="pointer-events-none absolute -left-6 top-4 h-10 w-10 rounded-full bg-yellow-200/70 blur-lg"
@@ -296,11 +305,11 @@
               </p>
             </div>
 
-            <div class="flex flex-wrap items-center gap-4 pt-1 text-xs text-slate-500">
+            <div class="flex flex-wrap items-center gap-4 pt-1 text-xs text-slate-400">
               <span
-                class="inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-yellow-50 px-3 py-1"
+                class="inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/80 px-3 py-1"
               >
-                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
                 1st Year · 2nd Semester
               </span>
               <span class="text-slate-500">B.Tech · VIT Vellore</span>
@@ -308,17 +317,17 @@
           </div>
 
           <!-- Right column -->
-          <div class="space-y-4">
+            <div class="space-y-4">
             <div class="glass card-hover rounded-2xl p-5">
               <div class="flex items-center justify-between gap-4">
                 <div>
-                  <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-slate-500">
+                  <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-slate-400">
                     Profile
                   </p>
-                  <p class="mt-1 text-sm font-medium text-slate-900">
+                  <p class="mt-1 text-sm font-medium text-slate-50">
                     Akash Bhasker
                   </p>
-                  <p class="text-xs text-slate-500">
+                  <p class="text-xs text-slate-400">
                     B.Tech · 1st Year – 2nd Semester
                   </p>
                 </div>
@@ -329,7 +338,7 @@
                 </div>
               </div>
 
-              <dl class="mt-4 grid grid-cols-2 gap-4 text-xs text-slate-600">
+              <dl class="mt-4 grid grid-cols-2 gap-4 text-xs text-slate-300">
                 <div>
                   <dt class="text-[0.65rem] uppercase tracking-[0.16em] text-slate-500">
                     University
@@ -350,7 +359,7 @@
             </div>
 
             <div
-              class="rounded-2xl border border-yellow-200 bg-yellow-50 p-4 text-xs text-slate-700 shadow-md shadow-yellow-100"
+              class="rounded-2xl border border-slate-700 bg-slate-900/80 p-4 text-xs text-slate-200 shadow-md shadow-black/60"
             >
               <p class="text-[0.9rem] leading-relaxed">
                 "We are what we repeatedly do. Excellence, then, is not an act but a
@@ -366,18 +375,18 @@
           <div class="mb-6 flex items-center justify-between gap-4">
             <div>
               <h2
-                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+                class="font-display text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl"
               >
                 About
               </h2>
-              <p class="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-500">
+              <p class="mt-1 text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
                 Background & mindset
               </p>
             </div>
           </div>
 
           <div
-            class="glass card-hover grid gap-6 rounded-2xl p-6 text-sm leading-relaxed text-slate-800 sm:grid-cols-[minmax(0,1.8fr)_minmax(0,1.2fr)] sm:p-7"
+            class="glass card-hover grid gap-6 rounded-2xl p-6 text-sm leading-relaxed text-slate-200 sm:grid-cols-[minmax(0,1.8fr)_minmax(0,1.2fr)] sm:p-7"
           >
             <div class="space-y-3">
               <p>
@@ -402,9 +411,9 @@
             </div>
 
             <div
-              class="space-y-3 rounded-xl border border-yellow-200 bg-yellow-50 p-4 text-sm text-slate-800"
+              class="space-y-3 rounded-xl border border-slate-700 bg-slate-900/80 p-4 text-sm text-slate-100"
             >
-              <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-amber-700">
+              <p class="text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-slate-400">
                 College expectations vs reality
               </p>
               <p>
@@ -428,7 +437,7 @@
           <div class="mb-6 flex items-center justify-between gap-4">
             <div>
               <h2
-                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+                class="font-display text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl"
               >
                 Skills
               </h2>
@@ -439,7 +448,7 @@
           </div>
 
           <div
-            class="mb-4 rounded-2xl border border-yellow-200 bg-yellow-50/70 p-4 text-xs text-slate-700 sm:text-sm"
+            class="mb-4 rounded-2xl border border-slate-700 bg-slate-900/80 p-4 text-xs text-slate-200 sm:text-sm"
           >
             Akash is currently learning Data Structures and Algorithms using
             <span class="font-semibold text-amber-700">C</span> and
@@ -458,10 +467,10 @@
                 >
                   Language
                 </p>
-                <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                <h3 class="text-[1.05rem] font-semibold text-slate-50">
                   C
                 </h3>
-                <p class="mt-2 text-xs text-slate-600">
+                <p class="mt-2 text-xs text-slate-300">
                   Core programming, understanding memory, and structured thinking.
                 </p>
               </div>
@@ -474,10 +483,10 @@
               >
                 Language
               </p>
-              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+              <h3 class="text-[1.05rem] font-semibold text-slate-50">
                 C++
               </h3>
-              <p class="mt-2 text-xs text-slate-600">
+              <p class="mt-2 text-xs text-slate-300">
                 Object-oriented programming and efficient problem solving.
               </p>
             </div>
@@ -489,10 +498,10 @@
               >
                 Core CS
               </p>
-              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+              <h3 class="text-[1.05rem] font-semibold text-slate-50">
                 Data Structures
               </h3>
-              <p class="mt-2 text-xs text-slate-600">
+              <p class="mt-2 text-xs text-slate-300">
                 Arrays, linked lists, stacks, queues, and more as the basis for
                 algorithms.
               </p>
@@ -505,10 +514,10 @@
               >
                 Mindset
               </p>
-              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+              <h3 class="text-[1.05rem] font-semibold text-slate-50">
                 Problem Solving
               </h3>
-              <p class="mt-2 text-xs text-slate-600">
+              <p class="mt-2 text-xs text-slate-300">
                 Breaking complex problems into smaller steps and reasoning through edge
                 cases.
               </p>
@@ -532,14 +541,14 @@
             <!-- Full Stack -->
             <div class="glass card-hover rounded-2xl p-4 text-sm">
               <p
-                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-amber-700"
+                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-300"
               >
                 Learning
               </p>
-              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+              <h3 class="text-[1.05rem] font-semibold text-slate-50">
                 Full Stack Development
               </h3>
-              <p class="mt-2 text-xs text-slate-600">
+              <p class="mt-2 text-xs text-slate-300">
                 Understanding how frontend, backend, and databases connect to form
                 complete products.
               </p>
@@ -550,14 +559,14 @@
               class="glass card-hover rounded-2xl p-4 text-sm md:col-span-2 lg:col-span-2"
             >
               <p
-                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-500"
+                class="mb-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-slate-400"
               >
                 Tools
               </p>
-              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+              <h3 class="text-[1.05rem] font-semibold text-slate-50">
                 Git
               </h3>
-              <p class="mt-2 text-xs text-slate-600">
+              <p class="mt-2 text-xs text-slate-300">
                 Version control, tracking changes, and collaborating on projects in a
                 structured way.
               </p>
@@ -570,7 +579,7 @@
           <div class="mb-6 flex items-center justify-between gap-4">
             <div>
               <h2
-                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+                class="font-display text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl"
               >
                 Academic Activities
               </h2>
@@ -582,21 +591,21 @@
 
           <div class="grid gap-5 lg:grid-cols-3">
             <!-- Podcast -->
-            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-100">
               <p
                 class="mb-2 inline-flex rounded-full border border-sky-300 bg-sky-50 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-sky-700"
               >
                 Reflection
               </p>
-              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+              <h3 class="text-[1.05rem] font-semibold text-slate-50">
                 Podcast Reflection
               </h3>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 Akash participated in a classroom activity where students listened to and
                 summarized a podcast discussing meaningfulness in life and the idea that
                 purpose often comes from consistent growth and personal development.
               </p>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 The activity reinforced the importance of long-term habits over instant
                 results, echoing his own belief that small, repeated efforts build the
                 foundation for future goals.
@@ -604,22 +613,22 @@
             </article>
 
             <!-- Chemistry -->
-            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-100">
               <p
                 class="mb-2 inline-flex rounded-full border border-emerald-300 bg-emerald-50 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-emerald-700"
               >
                 Laboratory
               </p>
-              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+              <h3 class="text-[1.05rem] font-semibold text-slate-50">
                 Chemistry Laboratory Work
               </h3>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 During chemistry lab sessions, Akash performed titration experiments
                 including acid–base titration and redox titration. These experiments
                 required precise measurements, careful observation, and calculations to
                 determine unknown concentrations.
               </p>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 This hands-on work trained his attention to detail and discipline — the
                 same qualities that transfer well to debugging code and validating
                 results in programming.
@@ -627,22 +636,22 @@
             </article>
 
             <!-- DS -->
-            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-100">
               <p
                 class="mb-2 inline-flex rounded-full border border-fuchsia-300 bg-fuchsia-50 px-2 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-fuchsia-700"
               >
                 Coursework
               </p>
-              <h3 class="text-[1.05rem] font-semibold text-slate-900">
+              <h3 class="text-[1.05rem] font-semibold text-slate-50">
                 Data Structures Learning
               </h3>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 Through coursework in data structures, Akash has begun developing
                 algorithmic thinking and problem solving skills using C and C++. The
                 course focuses on organizing data efficiently and designing algorithms to
                 solve computational problems.
               </p>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 These concepts form the backbone of his future goals in full stack
                 development and digital product building.
               </p>
@@ -655,7 +664,7 @@
           <div class="mb-6 flex items-center justify-between gap-4">
             <div>
               <h2
-                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+                class="font-display text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl"
               >
                 Interests
               </h2>
@@ -667,9 +676,9 @@
 
           <div class="grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1.3fr)_minmax(0,1.4fr)]">
             <!-- Guitar -->
-            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-100">
               <div class="flex items-center justify-between gap-3">
-                <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                <h3 class="text-[1.05rem] font-semibold text-slate-50">
                   Guitar
                 </h3>
                 <span
@@ -677,12 +686,12 @@
                   >Creative</span
                 >
               </div>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 Akash started learning guitar in the fourth grade. He studied acoustic
                 guitar for several years and completed Trinity Grade 5 in acoustic guitar
                 before transitioning to classical guitar.
               </p>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 He later completed Trinity Grade 5 in classical guitar as well. Music has
                 been a consistent creative outlet, although the workload of college has
                 made it harder to practice as regularly as before.
@@ -690,9 +699,9 @@
             </article>
 
             <!-- Cricket -->
-            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-100">
               <div class="flex items-center justify-between gap-3">
-                <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                <h3 class="text-[1.05rem] font-semibold text-slate-50">
                   Cricket
                 </h3>
                 <span
@@ -700,12 +709,12 @@
                   >Team sport</span
                 >
               </div>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 Akash played cricket extensively growing up and captained his school
                 cricket team in multiple tournaments. Under his leadership, the team
                 reached two finals and won one of them.
               </p>
-              <p class="mt-2 text-xs leading-relaxed text-slate-700">
+              <p class="mt-2 text-xs leading-relaxed text-slate-300">
                 These experiences taught him about responsibility, teamwork, and
                 performing under pressure — skills that help in both academics and
                 projects.
@@ -713,9 +722,9 @@
             </article>
 
             <!-- Running -->
-            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-800">
+            <article class="glass card-hover rounded-2xl p-5 text-sm text-slate-100">
               <div class="flex items-center justify-between gap-3">
-                <h3 class="text-[1.05rem] font-semibold text-slate-900">
+                <h3 class="text-[1.05rem] font-semibold text-slate-50">
                   Running
                 </h3>
                 <span
@@ -723,7 +732,7 @@
                   >Discipline</span
                 >
               </div>
-              <p class="mt-3 text-xs leading-relaxed text-slate-700">
+              <p class="mt-3 text-xs leading-relaxed text-slate-300">
                 For a long time, my asthma felt like an obstacle I couldn't get past,
                 especially since no medication seemed to provide a long-term fix. My
                 father always believed that exercise was the key to managing it, which is
@@ -747,7 +756,7 @@
           <div class="mb-6 flex items-center justify-between gap-4">
             <div>
               <h2
-                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+                class="font-display text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl"
               >
                 Projects
               </h2>
@@ -757,7 +766,7 @@
             </div>
           </div>
 
-          <div class="glass card-hover rounded-2xl p-6 text-sm text-slate-800 sm:p-7">
+          <div class="glass card-hover rounded-2xl p-6 text-sm text-slate-100 sm:p-7">
             <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
               <div class="max-w-xl">
                 <p
@@ -765,16 +774,16 @@
                 >
                   In progress
                 </p>
-                <h3 class="text-[1.15rem] font-semibold text-slate-900">
+                <h3 class="text-[1.15rem] font-semibold text-slate-50">
                   Creative Full Stack Web Project
                 </h3>
-                <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                <p class="mt-2 text-xs leading-relaxed text-slate-300">
                   Akash is currently working on a creative web-based project exploring
                   full stack development. The goal is to design and build a digital
                   product that combines front-end user experience with backend
                   functionality.
                 </p>
-                <p class="mt-2 text-xs leading-relaxed text-slate-700">
+                <p class="mt-2 text-xs leading-relaxed text-slate-300">
                   The focus is on learning how ideas move from a simple concept to a
                   working prototype — covering everything from UI design choices to how
                   data flows through the system.
@@ -783,13 +792,13 @@
 
               <div class="flex flex-col gap-2 pt-1 text-xs sm:items-end">
                 <button
-                  class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-1.5 font-medium text-slate-800 shadow-sm hover:border-slate-400"
+                  class="inline-flex items-center justify-center rounded-full border border-slate-600 bg-slate-900 px-4 py-1.5 font-medium text-slate-100 shadow-sm hover:border-slate-400 hover:scale-105 transition"
                   type="button"
                 >
                   GitHub
                 </button>
                 <button
-                  class="inline-flex items-center justify-center rounded-full border border-yellow-300 bg-yellow-50 px-4 py-1.5 font-medium text-amber-800 shadow-sm hover:border-yellow-400"
+                  class="inline-flex items-center justify-center rounded-full border border-slate-500 bg-slate-800 px-4 py-1.5 font-medium text-slate-100 shadow-sm hover:border-slate-300 hover:scale-105 transition"
                   type="button"
                 >
                   Live Demo
@@ -804,7 +813,7 @@
           <div class="mb-6 flex items-center justify-between gap-4">
             <div>
               <h2
-                class="font-display text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl"
+                class="font-display text-2xl font-semibold tracking-tight text-slate-50 sm:text-3xl"
               >
                 Contact
               </h2>
@@ -815,14 +824,14 @@
           </div>
 
           <div
-            class="glass grid gap-6 rounded-2xl p-6 text-sm text-slate-800 sm:grid-cols-[minmax(0,1.5fr)_minmax(0,1.5fr)] sm:p-7"
+            class="glass grid gap-6 rounded-2xl p-6 text-sm text-slate-100 sm:grid-cols-[minmax(0,1.5fr)_minmax(0,1.5fr)] sm:p-7"
           >
             <div class="space-y-3">
-              <p class="text-sm text-slate-700">
+              <p class="text-sm text-slate-200">
                 Akash is always open to connecting with people who share interests in
                 technology, product building, or entrepreneurship.
               </p>
-              <p class="text-xs text-slate-500">
+              <p class="text-xs text-slate-400">
                 This form is a static demo for now. In future versions, it can be
                 connected to email or a backend service.
               </p>
@@ -834,41 +843,41 @@
             >
               <div class="grid gap-3 sm:grid-cols-2">
                 <div>
-                  <label class="mb-1 block text-[0.7rem] font-medium text-slate-600">
+                  <label class="mb-1 block text-[0.7rem] font-medium text-slate-300">
                     Name
                   </label>
                   <input
                     type="text"
-                    class="w-full rounded-lg border border-yellow-200 bg-white px-3 py-1.5 text-xs text-slate-900 outline-none focus:border-yellow-400"
+                    class="w-full rounded-lg border border-slate-600 bg-slate-950 px-3 py-1.5 text-xs text-slate-100 outline-none focus:border-slate-300"
                     placeholder="Your name"
                   />
                 </div>
                 <div>
-                  <label class="mb-1 block text-[0.7rem] font-medium text-slate-600">
+                  <label class="mb-1 block text-[0.7rem] font-medium text-slate-300">
                     Email
                   </label>
                   <input
                     type="email"
-                    class="w-full rounded-lg border border-yellow-200 bg-white px-3 py-1.5 text-xs text-slate-900 outline-none focus:border-yellow-400"
+                    class="w-full rounded-lg border border-slate-600 bg-slate-950 px-3 py-1.5 text-xs text-slate-100 outline-none focus:border-slate-300"
                     placeholder="you@example.com"
                   />
                 </div>
               </div>
 
               <div>
-                <label class="mb-1 block text-[0.7rem] font-medium text-slate-600">
+                <label class="mb-1 block text-[0.7rem] font-medium text-slate-300">
                   Message
                 </label>
                 <textarea
                   rows="3"
-                  class="w-full rounded-lg border border-yellow-200 bg-white px-3 py-1.5 text-xs text-slate-900 outline-none focus:border-yellow-400"
+                  class="w-full rounded-lg border border-slate-600 bg-slate-950 px-3 py-1.5 text-xs text-slate-100 outline-none focus:border-slate-300"
                   placeholder="Write a short message..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                class="inline-flex items-center justify-center rounded-full border border-yellow-300 bg-yellow-50 px-4 py-1.5 text-[0.75rem] font-medium text-amber-800 hover:border-yellow-400"
+                class="inline-flex items-center justify-center rounded-full border border-slate-500 bg-slate-900 px-4 py-1.5 text-[0.75rem] font-medium text-slate-100 hover:border-slate-300"
               >
                 Send Message (Demo)
               </button>
@@ -879,16 +888,16 @@
     </main>
 
     <!-- ===== Footer ===== -->
-    <footer class="border-t border-yellow-200 bg-white py-5">
+    <footer class="border-t border-slate-800 bg-slate-950 py-5">
       <div
-        class="mx-auto flex max-w-6xl items-center justify-between px-4 text-xs text-slate-500 sm:px-6"
+        class="mx-auto flex max-w-6xl items-center justify-between px-4 text-xs text-slate-400 sm:px-6"
       >
         <p>
-          Built by <span class="font-medium text-slate-800">Akash Bhasker</span>
+          Built by <span class="font-medium text-slate-100">Akash Bhasker</span>
         </p>
         <a
           href="#home"
-          class="rounded-full border border-yellow-300 bg-yellow-50 px-3 py-1 text-[0.7rem] text-amber-800 hover:border-yellow-400"
+          class="rounded-full border border-slate-600 bg-slate-900 px-3 py-1 text-[0.7rem] text-slate-100 hover:border-slate-300"
         >
           Back to top
         </a>
